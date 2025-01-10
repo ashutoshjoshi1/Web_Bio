@@ -7,7 +7,7 @@ def locate_executable(command) -> Optional[str]:
     path = os.environ.get("PATH", "")
     for directory in path.split(":"):
         file_path = os.path.join(directory, command)
-        if os.path.isfile(file_path) and os.access(file_path, os.X_OK):
+        if os.path.isfile(file_path) and os.access(os.X_OK):
             return file_path
 def handle_exit(args):
     sys.exit(int(args[0]) if args else 0)
@@ -34,8 +34,7 @@ def main():
             builtins[command](args)
             continue
         elif executable := locate_executable(command):
-            x = *args.split('/')[-1]
-            subprocess.run([executable, x])
+            subprocess.run([executable, *args])
         else:
             print(f"{command}: command not found")
         sys.stdout.flush()
