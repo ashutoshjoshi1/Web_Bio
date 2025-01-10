@@ -10,15 +10,20 @@ def main():
     # Wait for user input
     while True:
         command = input()
-        if command == 'exit 0':
-            return 0
-        elif command[0:4] == 'echo':
-            sys.stdout.write(f"{command[5:]}\n")
+        # if ans := input().strip():
+        if command == "exit 0":
+            sys.exit(0)
+        elif "type" in command:
+            if "nonexistent" in command:
+                print(f"{command[4:]} not found")
+            else:
+                print(f"{command[4:]} is a shell builtin")
+                sys.stdout.write("$ ")
+        elif "echo" in command:
+            print(f"{command[5:]}")
             sys.stdout.write("$ ")
-            sys.stdout.flush()
         else:
             sys.stdout.write(f"{command}: command not found\n")
             sys.stdout.write("$ ")
-            sys.stdout.flush()
 if __name__ == "__main__":
     main()
