@@ -17,7 +17,7 @@ def handle_type(args):
     if args[0] in builtins:
         print(f"{args[0]} is a shell builtin")
     elif executable := locate_executable(args[0]):
-        print(f"{args[0]} is {executable}")
+        print(f"{args[0]} is {executable.split('/')[-1]}")
     else:
         print(f"{args[0]} not found")
 builtins = {
