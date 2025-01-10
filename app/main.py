@@ -37,6 +37,7 @@ def main():
             subprocess.run([executable, *args])
         else:
             print(f"{command}: command not found")
+        sys.stdout.flush()
 
 
 if __name__ == "__main__":
