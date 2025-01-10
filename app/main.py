@@ -16,7 +16,7 @@ def main():
         elif "type" in command:
             if command[5:] in ['echo', 'type', 'exit']:
                 print(f"{command[5:]} is a shell builtin")
-                # print(f"{command[5:]} not found")
+                sys.stdout.write("$ ")
             else:
                 sys.stdout.write(f"{command}: command not found\n")
                 sys.stdout.write("$ ")
