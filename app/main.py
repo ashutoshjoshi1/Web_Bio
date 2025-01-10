@@ -8,10 +8,13 @@ def main():
 
     
     # Wait for user input
-    command = input()
-    while command != 'quit':
-        print(f"{command}: command not found")
-        main()
-
+    while True:
+        command = input()
+        if command == 'exit':
+            return 0
+        else:
+            sys.stdout.write(f"{command}: command not found\n")
+            sys.stdout.write("$ ")
+            sys.stdout.flush()
 if __name__ == "__main__":
     main()
