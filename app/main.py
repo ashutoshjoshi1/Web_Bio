@@ -12,6 +12,10 @@ def main():
         command = input()
         if command == 'exit 0':
             return 0
+        elif command[0:4] == 'echo':
+            sys.stdout.write(f"{command[5:]}\n")
+            sys.stdout.write("$ ")
+            sys.stdout.flush()
         else:
             sys.stdout.write(f"{command}: command not found\n")
             sys.stdout.write("$ ")
