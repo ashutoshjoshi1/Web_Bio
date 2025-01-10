@@ -7,8 +7,8 @@ def locate_executable(command) -> Optional[str]:
     path = os.environ.get("PATH", "")
     for directory in path.split(":"):
         file_path = os.path.join(directory, command)
-        if os.path.isfile(file_path) and os.access(os.X_OK):
-            return file_path
+        if os.path.isfile(file_path) and os.access(file_path, os.X_OK):
+            return file_path.split('/')[-1]
 def handle_exit(args):
     sys.exit(int(args[0]) if args else 0)
 def handle_echo(args):
