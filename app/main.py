@@ -2,6 +2,7 @@ import os
 import subprocess
 import sys
 from typing import Optional
+
 def locate_executable(command) -> Optional[str]:
     path = os.environ.get("PATH", "")
     for directory in path.split(":"):
@@ -36,3 +37,7 @@ def main():
             subprocess.run([executable, *args])
         else:
             print(f"{command}: command not found")
+
+
+if __name__ == "__main__":
+    main()
