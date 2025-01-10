@@ -35,7 +35,11 @@ def main():
             print(f"{command[5:]}")
             sys.stdout.write("$ ")
         else:
-            sys.stdout.write(f"{command}: command not found\n")
-            sys.stdout.write("$ ")
+            if os.path.isfile(command.split(" ")[0]):
+                os.system(command)
+            else:
+                sys.stdout.write(f"{command}: command not found\n")
+                sys.stdout.write("$ ")
+                sys.stdout.flush()
 if __name__ == "__main__":
     main()
