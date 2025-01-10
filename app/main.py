@@ -10,7 +10,7 @@ def main():
     # Wait for user input
     while True:
         command = input()
-        if command == 'exit':
+        if command == 'exit 0':
             return 0
         else:
             sys.stdout.write(f"{command}: command not found\n")
